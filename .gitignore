@@ -1,4 +1,5 @@
 .htaccess
+.idea
 /config.php
 admin/config.php
 
