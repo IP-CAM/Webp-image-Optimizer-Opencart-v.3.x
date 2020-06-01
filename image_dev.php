@@ -37,7 +37,15 @@ class ModelToolImage extends Model {
 			}
 		}
 
-		if (is_file(DIR_IMAGE . $image_webp)) {
+		$check_accept = false;
+
+        if (isset($_SERVER['HTTP_ACCEPT']) && isset($_SERVER['HTTP_USER_AGENT'])) {
+            if( strpos( $_SERVER['HTTP_ACCEPT'], 'image/webp' ) !== false ) {
+                $check_accept = true;
+            }
+        }
+
+		if (is_file(DIR_IMAGE . $image_webp) && $check_accept == true ) {
 			$image_new = $image_webp;
 		} else {
 			if (!is_file(DIR_IMAGE . $image_new) || (filemtime(DIR_IMAGE . $image_old) > filemtime(DIR_IMAGE . $image_new))) {
