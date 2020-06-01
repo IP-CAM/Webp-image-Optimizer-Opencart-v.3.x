@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Image Catalog WebP</name>
+    <code>image-catalog-webp</code>
+    <version>1.0.0</version>
+    <author>David</author>
+    <link>www.davidev.it</link>
+    <file path="catalog/model/tool/image.php">
+        <operation>
+            <search><![CDATA[public function resize($filename, $width, $height) {]]></search>
+            <add position="before"><![CDATA[public function __construct($registry) {
+		parent::__construct($registry);
+		$registry->set('webp', new Webpimage($registry));
+	}
+    ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[$image_new = 'cache/' . utf8_substr($filename, 0, utf8_strrpos($filename, '.')) . '-' . (int)$width . 'x' . (int)$height . '.' . $extension;]]></search>
+            <add position="after"><![CDATA[$image_webp = 'cachewebp/' . utf8_substr($filename, 0, utf8_strrpos($filename, '.')) . '-' . (int)$width . 'x' . (int)$height . '.webp';
+
+		if( $extension == 'png' || $extension == 'jpg' || $extension == 'jpeg'){
+			if (is_file(DIR_IMAGE . $image_new)) {
+				if (is_file(DIR_IMAGE . $image_webp) == false) {
+
+					$path = '';
+
+					$directories = explode('/', dirname($image_webp));
+
+					foreach ($directories as $directory) {
+						$path = $path . '/' . $directory;
+
+						if (!is_dir(DIR_IMAGE . $path)) {
+							@mkdir(DIR_IMAGE . $path, 0777);
+						}
+					}
+					$this->webp->converter(DIR_IMAGE . $image_new,DIR_IMAGE . $image_webp);
+				}
+			}
+		}]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[if (!is_file(DIR_IMAGE . $image_new) || (filemtime(DIR_IMAGE . $image_old) > filemtime(DIR_IMAGE . $image_new))) {]]></search>
+            <add position="before"><![CDATA[if (is_file(DIR_IMAGE . $image_webp)) {
+			$image_new = $image_webp;
+		} else {]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[$image_new = str_replace(' ', '%20', $image_new);  // fix bug when attach image on email (gmail.com). it is automatic changing space " " to +]]></search>
+            <add position="before"><![CDATA[}]]></add>
+        </operation>
+    </file>
+</modification>
