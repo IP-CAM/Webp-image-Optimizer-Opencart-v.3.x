@@ -2,7 +2,7 @@
 <modification>
     <name>Image Catalog WebP</name>
     <code>image-catalog-webp</code>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <author>David</author>
     <link>www.davidev.it</link>
     <file path="catalog/model/tool/image.php">

@@ -1,5 +1,8 @@
 # Opencart-Webp-Optimizer OC 3.X
 
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-8892BF.svg?style=flat-square)](https://php.net)
+[![Minimum Opencart Version](https://img.shields.io/badge/Opencart-%3E%3D%203.X-green)](https://www.opencart.com/index.php?route=common/home)
+
 ---
 
 This is Open-surce Version. This extension integrates WebP into OpenCart, and adds WebP images to the page if the browser supports it. Browser support for WebP is detected based on a user-agent check. If WebP support is detected, the extension will output webp format images, otherwise the original cached images(png, jpg, gif) will be displayed.
@@ -53,7 +56,9 @@ Fork the repository, edit and submit a pull request. Please be very clear on you
 ---
 
 ## Version
-1.0.1
+
+### 1.0.1
 - Add Accept image
-1.0.0
+
+### 1.0.0
 - First release
