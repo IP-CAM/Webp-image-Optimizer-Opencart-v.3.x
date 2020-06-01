@@ -53,6 +53,7 @@ Fork the repository, edit and submit a pull request. Please be very clear on you
 ---
 
 ## Version
-
+1.0.1
+- Add Accept image
 1.0.0
 - First release
