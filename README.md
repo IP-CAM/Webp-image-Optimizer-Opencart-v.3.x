@@ -15,6 +15,7 @@ This is Open-surce Version. This extension integrates WebP into OpenCart, and ad
 - This is a plug and play modification without any settings.
 - Install file .ocmod on Extensions/Installer; 
 - Reload on Extensions/Modifications;
+- Load all Image on cache url: index.php?route=extension/load_image
 - PHP 7.x It's required
 ```
 ---
@@ -59,6 +60,7 @@ Fork the repository, edit and submit a pull request. Please be very clear on you
 
 ### 1.0.1
 - Add Accept image
+- Add Class for load all image on cache
 
 ### 1.0.0
 - First release
